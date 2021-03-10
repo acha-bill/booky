@@ -144,6 +144,9 @@ app.get('/contacts', async (req, res) => {
             })
             csvStream.end();
             ws.on('close', () => {
+                setTimeout(() => {
+                    fs.unlinkSync(path) //delete file after it has been sent.
+                }, 500)
                 return res.status(StatusCodes.OK).sendFile(path)
             })
         } else {
