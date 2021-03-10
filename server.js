@@ -1,5 +1,15 @@
 // load the things we need
 var express = require('express');
+const multer = require('multer');
+const readXlsxFile = require('read-excel-file/node');
+const csv = require('csv-parser')
+const fs = require('fs')
+
+
+
+var upload = multer({ dest: 'files/' })
+
+
 var app = express();
 
 // set the view engine to ejs
@@ -24,9 +34,25 @@ app.get('/', function (req, res) {
     });
 });
 
-// about page
-app.get('/about', function (req, res) {
-    res.render('pages/about');
-});
+
+app.post('/upload', upload.single('file'), (req, res) => {
+    switch (req.file.mimetype) {
+        case "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet": // .xlsx
+        case "application/vnd.ms-excel": //.xls
+            readXlsxFile(req.file.path).then((rows) => {
+                console.log(rows)
+            })
+        case "text/csv":
+            const results = [];
+            fs.createReadStream(req.file.path)
+                .pipe(csv())
+                .on('data', (data) => results.push(data))
+                .on('end', () => {
+                    console.log(results);
+                });
+    }
+    fs.unlinkSync(req.file.path)
+    res.send('done')
+})
 
 app.listen(8080);
