@@ -1,0 +1,50 @@
+html, body {
+    background-color: white;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    font-family: 'Roboto Mono', monospace;
+}
+.header {
+    background-color: gainsboro;
+    padding: 5px;
+    height: 60px;
+}
+.title {
+    font-size: 2rem;
+}
+.footer {
+    height: 30px;
+}
+.body {
+    height: calc(100vh - 90px); /* 60px for header + 30px for footer */
+}
+
+.main-search {
+   border-radius: 20px;
+   width: 60vh;
+}
+.ui-widget {
+    font-size: 1rem;
+        font-family: 'Roboto Mono', monospace;
+
+}
+.ui-widget-content {
+    color: black;
+}
+.ui-menu {
+    background: white;
+}
+.ui-menu .ui-menu-item {
+    border-bottom: 1px solid #dddddd;
+}
+
+.search-label {
+    font-size: 2.5rem;
+}
+.sub-title {
+    font-size: 14px;
+}
+.display-none {
+    display: none;
+}

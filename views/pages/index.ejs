@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../partials/head'); %>
+        <link rel="stylesheet" href="/views/styles/index.css">
+        <script src="/views/scripts/index.js"> </script>
+</head>
+
+<body>
+
+    <header>
+        <%- include('../partials/header'); %>
+    </header>
+
+    <main>
+        <div class="body d-flex justify-content-center align-items-center flex-column">
+            <div class="search-label mb-2">Booky</div>
+            <div class="input-group main-search mb-2">
+                <input id="auto-suggestions" type="text" class="form-control" placeholder="search anything">
+                <div class=" input-group-append">
+                    <button class="btn btn-primary">search</button>
+                </div>
+            </div>
+            <div class="sub-title">
+                <span>Have a file, <a id="upload-a" href="#">upload it!</a> or grab a <a id="sample-a"
+                        href="#">sample</a>
+            </div>
+
+            <!-- Button trigger modal -->
+            <button id="upload-modal-btn" type="button" class="display-none" data-toggle="modal"
+                data-target="#exampleModal">
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        </div>
+                        <div class="modal-body">
+                            <input id="upload-file" class="mb-2" type="file" class="form-control" />
+                            <div class="progress">
+                                <div id="upload-progress" class="progress-bar" role="progressbar" aria-valuenow="0"
+                                    aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                            <div class="d-flex justify-content-center">
+                                <span id="upload-percentage">0%</span>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button id="upload-cancel" type="button" class="btn btn-secondary"
+                                data-dismiss="modal">Cancel</button>
+                            <button id="upload-btn" type="button" class="btn btn-primary">Upload</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+
+
+    <footer>
+        <%- include('../partials/footer'); %>
+    </footer>
+
+</body>
+
+</html>
