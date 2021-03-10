@@ -1,3 +1,5 @@
-# ejs-demo
+# Booky
 
-This is demo code for a DigitalOcean tutorial here: https://www.digitalocean.com/community/tutorials/how-to-use-ejs-to-template-your-node-application
+## Running
+- Create a file in the root directory `.env`. You can copy stuff from `.env.sample` to `.env`
+- run the app with `npm start`
