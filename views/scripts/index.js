@@ -21,16 +21,21 @@ $(function () {
         return false;
     });
 
+    $("#search-btn").click(function () {
+        window.location.href = "/search"
+    })
+
     $("#auto-suggestions").autocomplete({
         source: function (request, response) {
             $.ajax({
-                url: "http://gd.geobytes.com/AutoCompleteCity",
-                dataType: "jsonp",
-                data: {
-                    q: request.term
-                },
+                url: `http://localhost:8080/contacts?limit=10&q=${request.term}`,
+                dataType: "json",
+                async: true,
                 success: function (data) {
+                    console.log(data)
+                    data = data.map(c => `${c.fName} ${c.lName}, ${c.email}`)
                     data.push("load more...")
+                    console.log(data)
                     response(data);
                 }
             });

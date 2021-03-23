@@ -23,6 +23,9 @@ app.use("/views", express.static(__dirname + "/views"));
 app.get('/', (req, res) => {
     res.render('pages/index');
 });
+app.get('/search', (req, res) => {
+    res.render('pages/search')
+})
 
 // upload excel or csv flie
 app.post('/upload', upload.single('file'), async (req, res) => {
@@ -73,14 +76,14 @@ app.post('/upload', upload.single('file'), async (req, res) => {
 // returns some stats
 app.get('/stats', async (req, res) => {
     try {
-        const count = await Contact.count()
+        const nTotal = await Contact.count()
         const nMale = await Contact.count({
             sex: new RegExp(`.*m.*`, 'i')
         })
         const nFemale = await Contact.count({
             sex: new RegExp(`.*f.*`, 'i')
         })
-        return res.status(StatusCodes.OK).json({ count, nMale, nFemale })
+        return res.status(StatusCodes.OK).json({ nTotal, nMale, nFemale })
     } catch (err) {
         return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(err)
     }

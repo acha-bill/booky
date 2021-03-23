@@ -48,3 +48,27 @@ html, body {
 .display-none {
     display: none;
 }
+.fas-lg {
+    font-size: 18px;
+}
+.search-form {
+    border-radius: 5px;
+    border: 1px solid  #dddddd;
+}
+.filter-by{
+    font-size: 1.2rem;
+}
+legend {
+    font-size: 1rem;
+}
+.pag-input {
+    width: 50px;
+}
+.table-container{
+    height: calc(100vh - 170px );
+    overflow: scroll
+}
+th {
+  position: sticky;
+  top: 0px;
+}
